@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! `id -u` -eq 0 ]
+then
+	echo  -e "ERROR:Permission denied!\nPlease use root!";
+	exit;
+fi
+
+mkdir -p /usr/local/share/trace
+mkdir -p /usr/local/share/trace/log
+cp blank.png  pid.png start.sh rule  rule.conf  src  trace /usr/local/share/trace
+ln -sf /usr/local/share/trace/start.sh /sbin/mytrace
+
