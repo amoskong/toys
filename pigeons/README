@@ -1,0 +1,52 @@
+Pigeons 0.0.1
+
+Copyright (C) 2008, Xiyou Linux Group
+
+
+Introduction:
+
+This project is on Linux+QT4 platform, which was used for transfer files on Internet, providing communication with IP MSG, FeiQ or other clients. It is written for KDE envirenment. This software is released under GPL lisence, for more details about the license, please see the content of file COPYING.
+
+
+Feathers:
+=================================================
+- basic buddy chatting
+- file transfer
+- chatting messages recording
+- custom-head picture displaying
+- display buddies' details
+- modifying personal details
+- UDP and TCP transfer files
+- search buddy and add buddy
+- system messages recording
+- auto replying
+- quick replying
+- system setting
+
+More details of changing in ChangeLog file.
+
+
+Compile and Run
+==============================================
+1. enter pigeons/src/ directory, input
+   ./configure --prefix=`kde-config --prefix`
+2. then type,
+   make
+   and press enter
+3. when making finished, input
+   su
+   make install
+4. now, pigeons should be installed into your system. you can 
+   open a console and type pigeons to run it.
+    
+
+Authors
+==============================================
+see file AUTHORS
+
+
+Skins Designer
+==============================================
+Zhao Chongri
+
+At the End

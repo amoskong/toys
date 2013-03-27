@@ -1,0 +1,15 @@
+<!DOCTYPE RCC> <RCC version="1.0">
+<qresource>
+	<file>temp-image/</file>
+	<file>data/zh_CN.qm</file>
+	<file>data/QQ.png</file>
+	<file>data/textbold.png</file>
+	<file>data/textitalic.png</file>
+	<file>data/textunder.png</file>
+	<file>data/textcolor.png</file>
+	<file>data/openimage.png</file>
+	<file>data/file.png</file>
+	<file>data/ipmsg.png</file>
+	<file>data/pigeons.ico</file>
+</qresource>
+</RCC> 
