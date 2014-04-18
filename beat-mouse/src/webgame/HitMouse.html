@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<title>打地鼠</title>
+<meta http-equiv="Content-Type" content="text/html;">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF">
+
+<p align="center">
+ <font size="6"><b><font color="#9966FF">打地鼠
+ </font></b></font>
+</p>
+
+<hr>
+ <CENTER>
+  <Applet code="HitMouse.class" width=815 height=670></Applet>
+ </CENTER>
+<hr>
+
+<p align="center">
+ <font color="#FF0000"></font>
+
+ <script language="JavaScript">
+ date = new Date();
+ 
+ document.write('<font size="3" face="Arial,Geneva,Sans Serif"><B>' +
+                "现在是" + (date.getMonth() + 1) + "/" + date.getDate() + 
+                "/" + (date.getYear()) + '</B></font>&nbsp;');
+
+ var Hour;
+ var Min;
+ var AM_PM;
+
+ Hour = date.getHours();
+ if(Hour < 12) 
+ {
+    AM_PM = "上午";
+ }
+ else
+ {
+    AM_PM = "下午";
+ }
+
+ if(Hour == 0) 
+ { 
+    Hours = 12;
+ }
+ else if(Hour > 12) 
+ {
+    Hour = Hour - 12;
+ }
+ 
+ Min = date.getMinutes();
+ if (Min < 10) 
+ {
+    Min = "0" + Min;
+ }
+
+ document.write('<font size="3" face="Arial,Geneva,Sans Serif"><B>' + 
+ AM_PM + Hour + ":" + Min + '</B></font>');
+ </script>
+</p>
+
+</body>
+</html>
