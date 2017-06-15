@@ -18,7 +18,7 @@ import java.net.*;
 
 public class Ktalk
 {
-    public static class kSocket // Êı¾İÍ¨ĞÅÀà£¬×¨ÃÅÓÃ¹«ÓÃSocketÊÕ·¢Êı¾İ
+    public static class kSocket // æ•°æ®é€šä¿¡ç±»ï¼Œä¸“é—¨ç”¨å…¬ç”¨Socketæ”¶å‘æ•°æ®
     {
         DatagramSocket dSocket;
         DatagramPacket inPacket;
@@ -32,7 +32,7 @@ public class Ktalk
         kSocket()
         {
             try{
-                dSocket = new DatagramSocket(1986);     // socket ¶Ë¿Ú1986
+                dSocket = new DatagramSocket(1986);     // socket ç«¯å£1986
                 Addr = InetAddress.getByName(local);
             }
             catch (IOException e){
@@ -42,13 +42,13 @@ public class Ktalk
             }
         }
 
-        void sendMsg(String ss,InetAddress addr)        // ·¢ËÍÊı¾İ
+        void sendMsg(String ss,InetAddress addr)        // å‘é€æ•°æ®
         {
             System.out.println("Send message :"+addr.toString()+" :"+ss);
 
             try{
                 outBuffer = ss.getBytes();
-                outPacket = new DatagramPacket(outBuffer, outBuffer.length, addr, 1986  );  //°ÑÊı¾İĞ´Èësocket
+                outPacket = new DatagramPacket(outBuffer, outBuffer.length, addr, 1986  );  //æŠŠæ•°æ®å†™å…¥socket
                 dSocket.send(outPacket);
             }
             catch (IOException e){
@@ -57,13 +57,13 @@ public class Ktalk
                 e.printStackTrace();
             }
         }
-        String receiveMsg()     // ½ÓÊÜÊı¾İ
+        String receiveMsg()     // æ¥å—æ•°æ®
         {
             System.out.println("Receive message......");
 
              try{
                 inPacket = new DatagramPacket(inBuffer, inBuffer.length);
-                dSocket.receive(inPacket);      // ´Ósocket¶ÁÈ¡Êı¾İ
+                dSocket.receive(inPacket);      // ä»socketè¯»å–æ•°æ®
                 Addr = inPacket.getAddress();
                 str = new String(inPacket.getData(), 0, inPacket.getLength());
                 System.out.println("Receive message: "+Addr+" : " + str);
@@ -81,9 +81,9 @@ public class Ktalk
 
     private static kSocket s;
     public static String local="192.168.1.12";
-    public static int []flag;   //±ê¼ÇÓÃ»§×Ó´°¿ÚÊÇ·ñĞÂ½¨£¬0ÎªÎ´ĞÂ½¨£¬1ÎªÒÑĞÂ½¨
+    public static int []flag;   //æ ‡è®°ç”¨æˆ·å­çª—å£æ˜¯å¦æ–°å»ºï¼Œ0ä¸ºæœªæ–°å»ºï¼Œ1ä¸ºå·²æ–°å»º
 
-    public static class subWindow //extends Frame   //×Ó´°¿ÚÀà
+    public static class subWindow //extends Frame   //å­çª—å£ç±»
     {
 
         private JTextArea outText;
@@ -96,7 +96,7 @@ public class Ktalk
         public Boolean fb;
         private int N;
 
-        subWindow(String ss,String name,int i)  //³õÊ¼»¯×Ó´°¿ÚÀà
+        subWindow(String ss,String name,int i)  //åˆå§‹åŒ–å­çª—å£ç±»
         {
             try{
 
@@ -118,15 +118,15 @@ public class Ktalk
             outText=new JTextArea("",20,57);
             inText=new JTextArea("",7,57);
 
-            JTextField idText=new JTextField("ÓÃ»§Ãû:",4);
+            JTextField idText=new JTextField("ç”¨æˆ·å:",4);
             idText.setEditable(false);
             nameText=new JTextField(name,5);
             JButton blodButton=new JButton("B");
             JButton iButton=new JButton("I");
-            huifuRB=new JCheckBox("×Ô¶¯»Ø¸´");
-            autoText=new JTextField("ÎÒÓĞÊÂ£¬¹ı»áÁªÏµ£¡",25);
-            JButton sendButton=new JButton("·¢ËÍ");
-            JButton closeButton=new JButton("¹Ø±Õ");
+            huifuRB=new JCheckBox("è‡ªåŠ¨å›å¤");
+            autoText=new JTextField("æˆ‘æœ‰äº‹ï¼Œè¿‡ä¼šè”ç³»ï¼",25);
+            JButton sendButton=new JButton("å‘é€");
+            JButton closeButton=new JButton("å…³é—­");
 
             container.add(new JScrollPane(outText));
 
@@ -178,16 +178,16 @@ public class Ktalk
                 }
             });
         }
-        public void print(String str)   //Êä³öĞÅÏ¢µ½ÁÄÌì´°¿ÚÎÄ±¾Çø
+        public void print(String str)   //è¾“å‡ºä¿¡æ¯åˆ°èŠå¤©çª—å£æ–‡æœ¬åŒº
         {
             outText.append(str);
 
         }
     }
 
-    public static class mainWindow extends Frame  //Ö÷´°¿ÚÀà
+    public static class mainWindow extends Frame  //ä¸»çª—å£ç±»
     {
-        int max=10;     //ÉèÖÃ×î´óÓÃ»§ÊıÁ¿
+        int max=10;     //è®¾ç½®æœ€å¤§ç”¨æˆ·æ•°é‡
         int i=0;
         int j=0;
 
@@ -198,7 +198,7 @@ public class Ktalk
         //public static int []flag;
         Container container;
 
-        mainWindow()    //³õÊ¼»¯Ö÷´°¿ÚÀà
+        mainWindow()    //åˆå§‹åŒ–ä¸»çª—å£ç±»
         {
             s=new kSocket();
             sub=new subWindow[max];
@@ -209,10 +209,10 @@ public class Ktalk
             JFrame app=new JFrame("mainWindow");
             container=app.getContentPane();
             container.setLayout(new FlowLayout());
-            //JButton idButton=new JButton("ÉÏÏß");
-            JTextField idText=new JTextField("êÇ³Æ:",3);
+            //JButton idButton=new JButton("ä¸Šçº¿");
+            JTextField idText=new JTextField("æ˜µç§°:",3);
             idText.setEditable(false);
-            nameText=new JTextField("ÄäÃûÓÃ»§",8);
+            nameText=new JTextField("åŒ¿åç”¨æˆ·",8);
             //container.add(idButton);
             container.add(idText);
             container.add(nameText);
@@ -222,7 +222,7 @@ public class Ktalk
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     try{
                         s.sendMsg("//login:"+nameText.getText(),InetAddress.getByName("192.168.1.255"));
-                        // ÓÃÊı¾İÍ¨ĞÅÀà¹ã²¥ÉÏÏßĞÅÏ¢
+                        // ç”¨æ•°æ®é€šä¿¡ç±»å¹¿æ’­ä¸Šçº¿ä¿¡æ¯
                     }
                     catch (IOException e){
                          System.out.println("IOException occurred with socket.");
@@ -232,10 +232,10 @@ public class Ktalk
                 }
             });
 
-            for(i=0;i<max;i++)  // ³õÊ¼»¯Êı¾İ½á¹¹
+            for(i=0;i<max;i++)  // åˆå§‹åŒ–æ•°æ®ç»“æ„
             {
                 flag[i]=0;
-                user[i]=new JButton("¿ÕÏĞĞÅµÀ");
+                user[i]=new JButton("ç©ºé—²ä¿¡é“");
                 user[i].setEnabled(false);
 
                 try{
@@ -251,7 +251,7 @@ public class Ktalk
                 user[i].setSize(200,300);
             }
 
-                //Îª°´Å¥Ìí¼Ó´´½¨×Ó´°¿ÚÀàµÄ¼àÌıÊÂ¼ş
+                //ä¸ºæŒ‰é’®æ·»åŠ åˆ›å»ºå­çª—å£ç±»çš„ç›‘å¬äº‹ä»¶
                 user[0].addActionListener(new ActionListener()
                 {
                     public void actionPerformed(ActionEvent event)
@@ -323,22 +323,22 @@ public class Ktalk
                     }
                 });
 
-            statusText=new JTextField("CopyRight @ ¿×½¨¾ü",12);
+            statusText=new JTextField("CopyRight @ å­”å»ºå†›",12);
             statusText.setEditable(false);
-            JButton loginB=new JButton("ÉÏÏß");
-            JButton exitB=new JButton("ÍË³ö");
+            JButton loginB=new JButton("ä¸Šçº¿");
+            JButton exitB=new JButton("é€€å‡º");
             app.add(statusText);
             app.add(loginB);
             app.add(exitB);
 
-            // ÎªÉÏÏß°´Å¥Ìí¼Ó¼àÌıÊÂ¼ş
+            // ä¸ºä¸Šçº¿æŒ‰é’®æ·»åŠ ç›‘å¬äº‹ä»¶
             loginB.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent event)
                 {
                     try{
                         s.sendMsg("//login:"+nameText.getText(),InetAddress.getByName("192.168.1.255"));
-                        // ¹ã²¥ÉÏÏßÌáÊ¾ĞÅÏ¢
+                        // å¹¿æ’­ä¸Šçº¿æç¤ºä¿¡æ¯
                     }
                     catch (IOException e){
                         System.out.println("IOException occurred with socket.");
@@ -353,7 +353,7 @@ public class Ktalk
                 {
                     try{
                         s.sendMsg("//exit:",InetAddress.getByName("192.168.1.255"));
-                        // ÓÃÊı¾İÍ¨ĞÅÀà·¢ËÍÏÂÏßĞÅÏ¢
+                        // ç”¨æ•°æ®é€šä¿¡ç±»å‘é€ä¸‹çº¿ä¿¡æ¯
                         //s.dSocket.close();
                     }
                     catch (IOException e){
@@ -370,9 +370,9 @@ public class Ktalk
             app.setResizable(false);
             app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            last();         // ³ÌĞò×îÖÕÁ÷³ÌÔËĞĞµ½´Ë£¬½øÈëwhileÑ­»·½ÓÊÕÊı¾İ
+            last();         // ç¨‹åºæœ€ç»ˆæµç¨‹è¿è¡Œåˆ°æ­¤ï¼Œè¿›å…¥whileå¾ªç¯æ¥æ”¶æ•°æ®
         }
-        public void makeSub(int i)  //´´½¨×Ó´°¿ÚÀà
+        public void makeSub(int i)  //åˆ›å»ºå­çª—å£ç±»
         {
             if(flag[i]==0)
             {
@@ -383,27 +383,27 @@ public class Ktalk
          public void last()
          {
            Boolean f;
-          while(true)       // ½øÈëwhileÑ­»·½ÓÊÕÊı¾İ
+          while(true)       // è¿›å…¥whileå¾ªç¯æ¥æ”¶æ•°æ®
             {
                 f=false;
-                String str=s.receiveMsg();      // ÓÃÊı¾İÍ¨ĞÅÀà½ÓÊÕÊı¾İ
+                String str=s.receiveMsg();      // ç”¨æ•°æ®é€šä¿¡ç±»æ¥æ”¶æ•°æ®
 
 
-                if(str.startsWith("//exit"))    // ÓÃ»§ÏÂÏß´¦Àí
+                if(str.startsWith("//exit"))    // ç”¨æˆ·ä¸‹çº¿å¤„ç†
                 {
                         for(i=0;i<=j;i++)
                         {
                             System.out.println("hhhhh:  addr[i]: +"+addr[i]+"s.Addr: "+s.Addr+" : "+i);
                             if(addr[i].equals(s.Addr))
                             {
-                                System.out.println("addr[i]µÈÓÚs.Addr  "+i+"  "+j);
+                                System.out.println("addr[i]ç­‰äºs.Addr  "+i+"  "+j);
 
                                 for(int p=i;p<j-1;p++)
                                 {
                                     user[p].setLabel(user[p+1].getLabel());
                                     addr[p]=addr[p+1];
                                 }
-                                user[j-1].setText("¿ÕÏĞĞÅµÀ");
+                                user[j-1].setText("ç©ºé—²ä¿¡é“");
                                 user[j-1].setEnabled(false);
                                 try{
                                     addr[j-1]=InetAddress.getByName(local);
@@ -425,7 +425,7 @@ public class Ktalk
                 }
 
 
-                if(str.startsWith("//login") && j<max)  // ÓÃ»§ÉÏÏß´¦Àí£¬Ìí¼Ó°´Å¥¡¢¸üĞÂ°´Å¥
+                if(str.startsWith("//login") && j<max)  // ç”¨æˆ·ä¸Šçº¿å¤„ç†ï¼Œæ·»åŠ æŒ‰é’®ã€æ›´æ–°æŒ‰é’®
                 {
 
                     try{
@@ -436,7 +436,7 @@ public class Ktalk
                             System.out.println("hhhhh:  addr[i]: +"+addr[i]+"s.Addr: "+s.Addr+" : "+i);
                             if(addr[i].equals(s.Addr))
                             {
-                                System.out.println("addr[i]µÈÓÚs.Addr");
+                                System.out.println("addr[i]ç­‰äºs.Addr");
                                 f=true;
                                 break;
                             }
@@ -449,7 +449,7 @@ public class Ktalk
 
                         if(s.Addr.equals(InetAddress.getByName(local)));
                         {
-                            System.out.println("½ÓÊÕµ½Localhost·¢À´Êı¾İ");
+                            System.out.println("æ¥æ”¶åˆ°Localhostå‘æ¥æ•°æ®");
                             //if(false)
                             //break;
                         }
@@ -464,20 +464,20 @@ public class Ktalk
                     }
                     if(j>0 && !str.startsWith("//login_reply"))
                     {
-                        s.sendMsg("//login_reply:"+nameText.getText(),s.Addr);  // ¶ÔÊ×´Î·¢ËÍÉÏÏßÌáÊ¾µÄÖ÷»ú£¬»ØÓ¦ĞÅÏ¢
+                        s.sendMsg("//login_reply:"+nameText.getText(),s.Addr);  // å¯¹é¦–æ¬¡å‘é€ä¸Šçº¿æç¤ºçš„ä¸»æœºï¼Œå›åº”ä¿¡æ¯
                         System.out.println("send //login_reply to"+s.Addr);
                     }
 
-                    addr[j++]=s.Addr;   // ½«Êı¾İÍ¨ĞÅipµØÖ·£¬´æ´¢ÔÚ¶ÔÓ¦µÄÊı×éÔªËØÀï
+                    addr[j++]=s.Addr;   // å°†æ•°æ®é€šä¿¡ipåœ°å€ï¼Œå­˜å‚¨åœ¨å¯¹åº”çš„æ•°ç»„å…ƒç´ é‡Œ
                 }
                 for(int i=0;i<j;i++)
                 {
 
-                    if(flag[i]==1)      // ×Ó´°¿ÚÒÑ¾­´´½¨
+                    if(flag[i]==1)      // å­çª—å£å·²ç»åˆ›å»º
                     {
 
                         System.out.println(addr[i]+"||"+s.Addr);
-                        if(addr[i].equals(s.Addr))  //ÕÒµ½µØÖ·¶ÔÓ¦µÄ×Ó´°¿Ú£¬²¢ÏÔÊ¾ĞÅÏ¢
+                        if(addr[i].equals(s.Addr))  //æ‰¾åˆ°åœ°å€å¯¹åº”çš„å­çª—å£ï¼Œå¹¶æ˜¾ç¤ºä¿¡æ¯
                         {
                             sub[i].print(str);
 
@@ -486,7 +486,7 @@ public class Ktalk
                                 Date d=new Date();
                                 String str2=new String();
                                 Format format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                                str2=format.format(d)+" "+nameText.getText()+" :\n"+"×Ô¶¯»Ø¸´:"+sub[i].autoText.getText()+"\n";
+                                str2=format.format(d)+" "+nameText.getText()+" :\n"+"è‡ªåŠ¨å›å¤:"+sub[i].autoText.getText()+"\n";
                                 sub[i].outText.append(str2);
                                 s.sendMsg(str2,s.Addr);
                             }
@@ -495,7 +495,7 @@ public class Ktalk
                     else
                     {
                         if(addr[i].equals(s.Addr) && !str.startsWith("//login") && !str.startsWith("//exit"))
-                        // ÕÒµ½µØÖ·¶ÔÓ¦µÄ×Ó´°¿Ú£¬str²»ÎªÉÏÏß¡¢ÏÂÏßÌáÊ¾ĞÅÏ¢
+                        // æ‰¾åˆ°åœ°å€å¯¹åº”çš„å­çª—å£ï¼Œsträ¸ä¸ºä¸Šçº¿ã€ä¸‹çº¿æç¤ºä¿¡æ¯
                         {
                             makeSub(i);
                             sub[i].print(str);
@@ -504,7 +504,7 @@ public class Ktalk
                                 Date d=new Date();
                                 String str2=new String();
                                 Format format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                                str2=format.format(d)+" "+nameText.getText()+" :\n"+"×Ô¶¯»Ø¸´:"+sub[i].autoText.getText()+"\n";
+                                str2=format.format(d)+" "+nameText.getText()+" :\n"+"è‡ªåŠ¨å›å¤:"+sub[i].autoText.getText()+"\n";
                                 sub[i].outText.append(str2);
                                 s.sendMsg(str2,s.Addr);
                             }
@@ -522,9 +522,9 @@ public class Ktalk
         }
     }
 
-    public static void main(String args[])  //mainº¯ÊıÀà
+    public static void main(String args[])  //mainå‡½æ•°ç±»
     {
-        mainWindow main=new mainWindow();   //´´½¨Ö÷´°¿ÚÀà
+        mainWindow main=new mainWindow();   //åˆ›å»ºä¸»çª—å£ç±»
     }
 
 }
